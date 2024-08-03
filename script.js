@@ -5,10 +5,9 @@ function getCoordinates() {
   resultRows.innerHTML = ""; // Bersihkan hasil sebelumnya
 
   if (awbNumber) {
-    // Tampilkan loading indicator
     document.getElementById("loading").style.display = "block";
 
-    // Ganti URL berikut dengan endpoint API Anda yang mengambil dropoff_address berdasarkan awbNumber
+    // Ganti URL berikut dengan endpoint Prod atau staging ya
     const apiUrl = `https://adminpanel-test.rideblitz.id/api/get_address?awb_number=${awbNumber}`;
 
     fetch(apiUrl)
@@ -51,7 +50,6 @@ function getCoordinates() {
                                 </div>`;
             })
             .finally(() => {
-              // Sembunyikan loading indicator
               document.getElementById("loading").style.display = "none";
             });
         } else {
@@ -60,7 +58,6 @@ function getCoordinates() {
                             <div class="column">AWB Number: ${awbNumber}</div>
                             <div class="column">Gagal mendapatkan alamat: ${data.message}</div>
                         </div>`;
-          // Sembunyikan loading indicator
           document.getElementById("loading").style.display = "none";
         }
       })
@@ -71,7 +68,6 @@ function getCoordinates() {
                         <div class="column">AWB Number: ${awbNumber}</div>
                         <div class="column">Terjadi kesalahan saat mengambil alamat.</div>
                     </div>`;
-        // Sembunyikan loading indicator
         document.getElementById("loading").style.display = "none";
       });
   }
