@@ -1,0 +1,28 @@
+const apiKey = 'AIzaSyBj3dEMVfxewVQ7jbull1Hb_fKOM-BmFr8'; function
+getCoordinates() { const addresses =
+document.getElementById('addresses').value.split('\n'); const resultRows =
+document.getElementById('resultRows'); resultRows.innerHTML = ''; // Bersihkan
+hasil sebelumnya addresses.forEach(address => { if (address.trim()) { const url
+=
+`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address.trim())}&key=${apiKey}`;
+fetch(url) .then(response => response.json()) .then(data => { if (data.status
+=== 'OK') { const location = data.results[0].geometry.location;
+resultRows.innerHTML += `
+<div class="row">
+  <div class="column">${address}</div>
+  <div class="column">
+    Latitude: ${location.lat}, Longitude: ${location.lng}
+  </div>
+</div>
+`; } else { resultRows.innerHTML += `
+<div class="row">
+  <div class="column">${address}</div>
+  <div class="column">Geocoding gagal: ${data.status}</div>
+</div>
+`; } }) .catch(error => { console.error('Error:', error); resultRows.innerHTML
++= `
+<div class="row">
+  <div class="column">${address}</div>
+  <div class="column">Terjadi kesalahan saat mengambil koordinat.</div>
+</div>
+`; }); } }); }

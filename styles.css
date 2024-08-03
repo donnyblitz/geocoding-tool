@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+textarea {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+button {
+  padding: 5px 10px;
+}
+
+#results {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  font-weight: bold;
+  display: table-row;
+}
+
+.column {
+  display: table-cell;
+  padding: 5px;
+  border: 1px solid #ccc;
+  vertical-align: top;
+}
+
+.row {
+  display: table-row;
+}
